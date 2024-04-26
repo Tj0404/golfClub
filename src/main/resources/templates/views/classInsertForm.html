@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout_default}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{/js/data.js}"></script>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <form id="form" th:action="@{/golfclub/insert}" method="post" class="container">
+        <div class="resist">
+            <label class="form-label">수강월</label>
+            <input id="resistMonth" type="text" th:field="${classes.resistMonth}" class="form-control">
+            <span th:errors="${classes.resistMonth}"></span>
+        </div>
+        <br>
+
+        <div>회원명</div>
+        <div class="memberName">
+            <select id="member_select" onchange="changeName()" th:field="${members}" class="form-select">
+                <option value="none">회원명</option>
+                <option th:each="member : ${members}" th:value="${member.memberId}"
+                        th:text="${member.memberName}"></option>
+            </select>
+            <br>
+        </div>
+        <label class="form-label">회원번호</label>
+        <div id="nameToNum"></div>
+        <br>
+
+        <div class="area">
+            <label class="form-label">수강월</label>
+            <input id="classArea" type="text" th:field="${classes.classArea}" class="form-control">
+            <span th:errors="${classes.classArea}"></span>
+        </div>
+        <br>
+
+        <div>강의명</div>
+        <div class="className">
+            <select id="class_select" onchange="changeName()" th:field="${teachers}" class="form-select">
+                <option value="none">강의명</option>
+                <option th:each="teacher : ${teachers}" th:value="${teacher.classPrice}"
+                        th:text="${teacher.className}"></option>
+            </select>
+            <br>
+        </div>
+        <label class="form-label">수강료</label>
+        <div id="classCost"></div>
+        <br>
+
+<!--        <input type="submit" value="수강신청" class="btn btn-primary">-->
+<!--        <button type="button" th:href="/golfclub/insert" class="btn btn-primary"></button>-->
+
+
+
+
+
+
+
+
+
+
+    </form>
+</div>
+</body>
+</html>
